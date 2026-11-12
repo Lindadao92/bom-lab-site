@@ -1,9 +1,148 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>bom lab</title><style>*{box-sizing:border-box}body{margin:0;background:#FAFAF8;color:#1A1A1A;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
-main{max-width:680px;margin:0 auto;padding:32px 20px 64px}header{max-width:680px;margin:0 auto;padding:24px 20px 0;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
-.brand{font:500 26px Georgia,"Times New Roman",serif;letter-spacing:-.5px;color:#1A1A1A;text-decoration:none}nav a{color:#3F4154;margin-left:16px;font-size:15px}nav a:first-child{margin-left:0}
-h1{font-size:30px;line-height:1.2;letter-spacing:-.5px;margin:24px 0 8px}h2{font-size:20px;margin:36px 0 8px}p,li{color:#2B2B2F}a{color:#3F4154}
-.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px;background:#fff;border:1px solid #E9E8E4}th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid #E9E8E4}th{background:#F3F2EF}
-.cards{display:grid;gap:12px;margin-top:24px}.card{display:block;background:#fff;border:1px solid #E9E8E4;border-radius:16px;padding:18px 20px;text-decoration:none;color:#1A1A1A}.card span{display:block;color:#55555B;font-size:15px}
-@media (prefers-color-scheme:dark){body{background:#151517;color:#F2F2F0}p,li{color:#DDDDD8}.brand,h1,h2{color:#F2F2F0}a,nav a{color:#B9BBD0}table,.card{background:#1E1E21;border-color:#2E2E33;color:#F2F2F0}th{background:#26262A}th,td{border-color:#2E2E33}.card span{color:#A9A9B2}}</style></head>
-<body><header><a class="brand" href="./">bom lab</a><nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a></nav></header><main><h1>bom lab</h1><p>A skincare journal and routine guide for iPhone.</p><div class="cards"><a class="card" href="privacy.html">Privacy policy<span>What stays on your phone, and what leaves it.</span></a><a class="card" href="terms.html">Terms of use<span>The rules for using the app.</span></a><a class="card" href="support.html">Support<span>How to reach us.</span></a></div></main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bom lab: skincare that starts with your skin</title>
+<meta name="description" content="bom lab reads your skin from a selfie, builds a routine from your answers, and shows how well each product matches your skin. Coming soon for iPhone.">
+<meta property="og:title" content="bom lab">
+<meta property="og:description" content="Skincare that starts with your skin. Coming soon for iPhone.">
+<meta property="og:image" content="https://lindadao92.github.io/bom-lab-site/img/icon.png">
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--bg:#FAFAF8;--surface:#FFFFFF;--sunken:#F3F2EF;--ink:#1A1A1A;--soft:#55555B;--line:#E9E8E4;--accent:#3F4154;--wash:#EFEFF3;--frame:#1A1A1A}
+@media (prefers-color-scheme:dark){:root{--bg:#131315;--surface:#1D1D20;--sunken:#19191B;--ink:#F3F3F0;--soft:#A9A9B2;--line:#2C2C31;--accent:#C3C5DA;--wash:#232329;--frame:#000000}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font:500 28px Georgia,"Times New Roman",serif;letter-spacing:-.6px;color:var(--ink);text-decoration:none}
+nav a{margin-left:18px;font-size:15px;text-decoration:none;color:var(--soft)}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:36px 0 72px}
+.pill{display:inline-block;background:var(--wash);color:var(--accent);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+h1{font-size:clamp(38px,6vw,60px);line-height:1.05;letter-spacing:-1.8px;margin:18px 0 16px;text-wrap:balance}
+.lede{font-size:20px;line-height:1.5;color:var(--soft);max-width:30em;margin:0 0 28px}
+.soon{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);border-radius:999px;padding:14px 24px;font-weight:600}
+.soon small{font-weight:400;opacity:.75}
+.phone{display:block;width:100%;max-width:290px;height:auto;margin:0 auto;border:9px solid var(--frame);border-radius:44px;background:var(--frame);box-shadow:0 30px 60px -28px rgba(20,20,30,.45)}
+.features{display:grid;gap:72px;padding:24px 0 80px}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.feature:nth-child(even) .shot{order:2}
+.feature .phone{max-width:260px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(26px,3.6vw,34px);line-height:1.15;letter-spacing:-.8px;margin:10px 0 12px;text-wrap:balance}
+.feature p{color:var(--soft);margin:0 0 14px;max-width:28em}
+.feature ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.feature li{padding-left:26px;position:relative}
+.feature li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:72px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px;letter-spacing:-.2px}
+.card p{margin:0;color:var(--soft);font-size:15.5px}
+.privacy{background:var(--sunken);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0;text-align:center}
+.privacy h2{margin-top:0}
+.privacy p{color:var(--soft);max-width:36em;margin:0 auto 18px}
+footer{padding:32px 0 48px;color:var(--soft);font-size:14.5px}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--soft)}
+footer p{margin:14px 0 0;max-width:46em}
+@media (max-width:760px){
+  .hero,.feature{grid-template-columns:1fr;gap:32px}
+  .hero{padding:16px 0 56px}
+  .feature:nth-child(even) .shot{order:0}
+  .features{gap:56px}
+  .more{grid-template-columns:1fr}
+  nav a:first-child{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="./">bom lab</a>
+    <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a></nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="pill">Coming soon for iPhone</span>
+      <h1>Skincare that starts with your skin.</h1>
+      <p class="lede">Take a selfie. bom lab reads your skin, builds a routine around what it sees and what you tell it, and shows how well each product fits you.</p>
+      <span class="soon">Coming soon <small>on the App Store</small></span>
+    </div>
+    <div class="shot"><img class="phone" src="img/home.jpg" width="507" height="1100" alt="The bom lab home screen with a daily selfie check-in and a skin age estimate"></div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="shot"><img class="phone" src="img/routine.jpg" width="507" height="1100" loading="lazy" alt="A morning routine with five steps, personalised from a photo analysis"></div>
+      <div>
+        <span class="eyebrow">Your routine</span>
+        <h2>A morning and evening routine built for you.</h2>
+        <p>Your answers and your photo analysis decide the steps, and safety rules keep out anything that does not suit you.</p>
+        <ul>
+          <li>Each step says why it was chosen</li>
+          <li>Focuses on what your photo shows first</li>
+          <li>Conservative rules for pregnancy, sensitive skin and medication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="shot"><img class="phone" src="img/product.jpg" width="507" height="1100" loading="lazy" alt="A product page showing a skin match of 8 out of 10"></div>
+      <div>
+        <span class="eyebrow">Skin match</span>
+        <h2>See how well a product fits your skin, and why.</h2>
+        <p>Every product gets a match out of 10 for you, with the reasons spelled out from your own answers and photo findings.</p>
+        <ul>
+          <li>Skin type, your concerns, fragrance and research</li>
+          <li>Tells you when a product is not for you right now</li>
+          <li>No paid placement and no affiliate links</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="shot"><img class="phone" src="img/products.jpg" width="507" height="1100" loading="lazy" alt="The Discover tab listing cleansers with their skin match"></div>
+      <div>
+        <span class="eyebrow">Discover</span>
+        <h2>Products and ingredients, checked against the research.</h2>
+        <p>Look up a product by name or by a photo of the pack, and read what studies say about what is in it.</p>
+        <ul>
+          <li>Strengths compared with what was actually studied</li>
+          <li>Plain-language notes on over 60 ingredients</li>
+          <li>Says clearly what has and has not been checked</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="more">
+    <div class="card"><h3>Daily check-ins</h3><p>A quick selfie scores tone, redness, blemishes and texture, so you can see how your skin changes over weeks.</p></div>
+    <div class="card"><h3>Ask about your skin</h3><p>A chat that knows your answers and routine and can look at your latest selfie. Short, specific answers.</p></div>
+    <div class="card"><h3>Colour analysis</h3><p>Your undertone and colour season from one selfie, with palettes for clothes and makeup.</p></div>
+  </section>
+</div>
+
+<section class="privacy">
+  <div class="wrap">
+    <span class="eyebrow">Private by design</span>
+    <h2>Your data stays on your phone.</h2>
+    <p>No account, no advertising, no tracking. Your photos and answers leave your phone only when you agree to an AI feature, and you can switch that off at any time.</p>
+    <a href="privacy.html">Read the privacy policy</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div class="row">
+      <span>© 2026 bom lab</span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></span>
+    </div>
+    <p>bom lab is a wellness and education app. Skin scores, skin age and matches are AI estimates from a photo and your answers. It does not diagnose, treat or prevent any condition. Screens show sample data. Product names belong to their owners; bom lab is not affiliated with the brands shown.</p>
+  </footer>
+</div>
+</body>
+</html>
