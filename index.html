@@ -66,15 +66,18 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betwe
   .hero .copy{padding-bottom:0}
   .hero .phone{max-width:240px;margin-bottom:-110px}
   section.block{padding-top:52px}
-  .screens{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px;scrollbar-width:none}
-  .screens::-webkit-scrollbar{display:none}
-  .screen{flex:0 0 78%;scroll-snap-align:center}
-  .bento{gap:12px}
+  .screens{grid-template-columns:1fr;gap:16px}
+  .screen .txt{min-height:0}
+  .screen .phone{max-width:240px;margin-bottom:-150px}
+  .bento{grid-template-columns:1fr;gap:12px}
   footer{margin-top:52px}
   footer .cols{grid-template-columns:1fr 1fr 1fr;gap:24px 16px}
   footer .about{grid-column:1/-1}
-  .tile{padding:16px;border-radius:22px}
-  .viz{height:88px}
+  .tile{display:grid;grid-template-columns:104px 1fr;column-gap:16px;align-items:center;padding:14px;border-radius:22px}
+  .tile .viz{grid-row:1/3;width:104px;height:104px;margin:0;padding:12px;gap:4px}
+  .tile h3{align-self:end;margin:0}
+  .tile p{align-self:start}
+  .talk b{font-size:10.5px;padding:5px 8px;white-space:normal;max-width:100%}
   nav a:first-child{margin-left:0}
 }
 </style>
