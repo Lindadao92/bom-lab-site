@@ -51,6 +51,15 @@ h3{margin:6px 0 6px;font-size:20px;line-height:1.25;letter-spacing:-.3px}
 .talk b{font-weight:500;font-size:12.5px;line-height:1.3;padding:6px 11px;border-radius:13px;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .talk .q{align-self:flex-end;background:var(--accent);color:var(--bg)}
 .talk .a{background:var(--bubble);color:var(--ink)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:#FAF6F3;color:#1B1B1F;border-radius:36px;padding:48px 48px 0;overflow:hidden}
+.feature>*{min-width:0}
+.feature .copy{padding-bottom:48px}
+.feature h2{margin-bottom:24px}
+.feature .point{margin-top:22px}
+.feature .point p{margin:0;color:#5D5D66;font-size:15.5px}
+.feature .eyebrow{color:#4A4E70}
+.feature img{display:block;width:100%;max-width:400px;height:auto;margin:0 auto}
+@media (max-width:900px){.feature{grid-template-columns:1fr;padding:36px 24px 0;gap:8px}.feature .copy{padding-bottom:0}.feature img{max-width:340px}}
 footer{margin-top:72px;padding:48px 0 40px;border-top:1px solid var(--line);color:var(--soft);font-size:15px}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
 footer .about p{margin:10px 0 0;max-width:18em}
@@ -120,6 +129,17 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betwe
     </div>
   </section>
 
+  <section class="block" id="features">
+    <div class="feature">
+      <div class="copy">
+        <h2>Your features, your colours.</h2>
+        <div class="point"><span class="eyebrow">Face asymmetry</span><h3>Where left and right differ, and by how much</h3><p>One guided photo is measured on your phone: eyes, brows, cheeks, jaw, lips and chin, each against your own midline.</p></div>
+        <div class="point"><span class="eyebrow">Colour analysis</span><h3>Your season, undertone and palettes</h3><p>From one daylight selfie: your undertone, depth and contrast, a colour season, and palettes for clothes, makeup and hair.</p></div>
+      </div>
+      <img src="img/features.jpg" width="784" height="1638" loading="lazy" alt="Two phones: a face asymmetry measurement with lines across the eyes, brows, lips and jaw, and a colour analysis showing the season Deep Winter with its palette">
+    </div>
+  </section>
+
   <section class="block" id="more">
     <h2>More from one selfie.</h2>
     <div class="bento">
@@ -148,7 +168,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betwe
         <a class="brand" href="./">bom lab</a>
         <p>Skincare that starts with your skin. Coming soon for iPhone.</p>
       </div>
-      <div><h4>App</h4><a href="#screens">Routine</a><a href="#screens">Skin match</a><a href="#more">Colour analysis</a><a href="#more">Face asymmetry</a></div>
+      <div><h4>App</h4><a href="#screens">Routine</a><a href="#screens">Skin match</a><a href="#features">Colour analysis</a><a href="#features">Face asymmetry</a></div>
       <div><h4>Legal</h4><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></div>
       <div><h4>Help</h4><a href="support.html">Support</a><a href="support.html">Contact</a></div>
     </div>
