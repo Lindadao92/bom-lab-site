@@ -60,6 +60,71 @@ h3{margin:6px 0 6px;font-size:20px;line-height:1.25;letter-spacing:-.3px}
 .feature .eyebrow{color:#4A4E70}
 .feature img{display:block;width:100%;max-width:400px;height:auto;margin:0 auto}
 @media (max-width:900px){.feature{grid-template-columns:1fr;padding:36px 24px 0;gap:8px}.feature .copy{padding-bottom:0}.feature img{max-width:340px}}
+[hidden]{display:none!important}
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:36px;padding:44px 48px;scroll-margin-top:16px}
+.quiz-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.quiz-intro h2{margin-bottom:14px}
+.quiz-intro .lede{margin-bottom:24px}
+.quiz-intro ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:qi}
+.quiz-intro ol li{counter-increment:qi;display:flex;gap:12px;align-items:center;background:var(--sunken);border-radius:16px;padding:12px 14px;font-size:15.5px}
+.quiz-intro ol li::before{content:counter(qi);flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--bg);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.start{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--bg);border-radius:999px;padding:15px 26px;font:600 17px/1 inherit;font-family:inherit;text-decoration:none}
+.start:hover{opacity:.9}
+.hero .start{margin-right:10px;margin-bottom:10px}
+#quiz{max-width:640px;margin:0 auto}
+.q-loading{color:var(--soft);text-align:center;padding:40px 0}
+.q-progress{height:6px;border-radius:6px;background:var(--sunken);overflow:hidden}
+.q-progress i{display:block;height:100%;background:var(--accent);border-radius:6px;transition:width .3s}
+.q-count{margin:10px 0 0;font-size:13.5px;color:var(--soft);text-align:center}
+.q-title{font:500 clamp(26px,3.4vw,32px)/1.15 Georgia,"Times New Roman",serif;letter-spacing:-.6px;margin:18px 0 14px;text-wrap:balance}
+.q-sub{margin:20px 0 10px;font-size:16px}
+.q-lead{color:var(--soft);margin:0 0 16px}
+.q-small{color:var(--soft);font-size:14px;margin:14px 0 0}
+.q-chips{display:flex;flex-wrap:wrap;gap:8px}
+.q-chip{appearance:none;cursor:pointer;font:500 15px/1.25 inherit;font-family:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:11px 16px;min-height:44px;text-align:left}
+.q-chip:hover{border-color:var(--accent)}
+.q-chip.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.q-field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;margin-top:16px}
+.q-field input{font:400 17px/1.3 inherit;font-family:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;width:100%}
+.q-field input:focus{outline:none;border-color:var(--accent)}
+.q-notice{margin:16px 0 0;background:var(--wash);border-radius:14px;padding:14px 16px;font-size:15px}
+.q-notice.clay{background:#F7E9E1;color:#3B2A22}
+.q-foot{display:flex;gap:10px;margin-top:28px}
+.q-next,.q-back{appearance:none;cursor:pointer;font:600 16px/1 inherit;font-family:inherit;border-radius:999px;padding:16px 22px;min-height:52px}
+.q-next{flex:1;border:0;background:var(--ink);color:var(--bg)}
+.q-next:disabled{opacity:.35;cursor:not-allowed}
+.q-back{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.q-link{appearance:none;background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+#quiz:has(.r-head){max-width:none}
+.r-head{max-width:640px}
+.r-why{margin:0 0 8px;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--soft)}
+.r-why b{color:var(--ink);font-weight:600}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.r-half{border-radius:24px;padding:20px;border:1px solid var(--line)}
+.r-half.am{background:#FFF9EC;border-color:#F4E7C8;color:#1B1B1F}
+.r-half.pm{background:#F3F4FB;border-color:#DFE1F0;color:#1B1B1F}
+.r-half h4{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:18px}
+.r-ico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;font-size:17px}
+.r-half ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.r-half li{display:flex;gap:12px;align-items:center}
+.r-half li img,.r-ph{flex:none;width:56px;height:56px;border-radius:14px;background:#fff;object-fit:contain}
+.r-ph{display:flex;align-items:center;justify-content:center;font-weight:700;color:#55555B;text-transform:uppercase}
+.r-half li div{display:flex;flex-direction:column;min-width:0}
+.r-step{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6B6B73}
+.r-half li b{font-size:15.5px;font-weight:600}
+.r-prod{font-size:14px;color:#55555B}
+.r-days{font-size:12.5px;color:#6B6B73;margin-top:2px}
+.r-more{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:16px;background:var(--wash);border-radius:24px;padding:24px}
+.r-more h4{margin:0 0 8px;font-size:18px}
+.r-more ul{margin:0;padding-left:20px;color:var(--soft);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.r-cta{text-decoration:none;white-space:nowrap}
+.r-note{margin-top:16px}
+@media (max-width:760px){
+  .quiz{padding:28px 20px;border-radius:28px}
+  .quiz-intro{grid-template-columns:1fr;gap:22px}
+  .r-grid,.r-more{grid-template-columns:1fr}
+  .r-cta{justify-content:center;white-space:normal}
+}
 footer{margin-top:72px;padding:48px 0 40px;border-top:1px solid var(--line);color:var(--soft);font-size:15px}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
 footer .about p{margin:10px 0 0;max-width:18em}
@@ -106,9 +171,29 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betwe
       <span class="pill">Coming soon for iPhone</span>
       <h1>Skincare that starts with your skin.</h1>
       <p class="lede">Take a selfie. bom lab reads your skin, builds a routine around what it sees, and shows how well each product fits you.</p>
+      <a class="start" href="#routine" data-start-quiz>Build my routine</a>
       <span class="soon">Coming soon <small>on the App Store</small></span>
     </div>
     <div><img class="phone" src="img/home.jpg" width="817" height="1865" alt="The bom lab home screen with a week of selfie check-ins and scores for skin age, tone and redness"></div>
+  </section>
+
+  <section class="block" id="routine">
+    <div class="quiz">
+      <div class="quiz-intro" id="quiz-intro">
+        <div>
+          <span class="eyebrow">Free routine</span>
+          <h2>Get your routine in two minutes.</h2>
+          <p class="lede">Answer the same questions the app asks. bom lab builds your morning and evening routine from them, with real products, right here.</p>
+          <button type="button" class="start" data-start-quiz>Build my routine</button>
+        </div>
+        <ol>
+          <li>Your skin, goals and climate</li>
+          <li>A safety check that keeps out what does not suit you</li>
+          <li>Your routine, step by step, with products</li>
+        </ol>
+      </div>
+      <div id="quiz" hidden aria-live="polite"></div>
+    </div>
   </section>
 
   <section class="block" id="screens">
@@ -160,12 +245,13 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betwe
         <a class="brand" href="./">bom lab</a>
         <p>Skincare that starts with your skin. Coming soon for iPhone.</p>
       </div>
-      <div><h4>App</h4><a href="#screens">Routine</a><a href="#screens">Skin match</a><a href="#features">Colour analysis</a><a href="#features">Face asymmetry</a></div>
+      <div><h4>App</h4><a href="#routine">Build your routine</a><a href="#screens">Routine</a><a href="#screens">Skin match</a><a href="#features">Colour analysis</a><a href="#features">Face asymmetry</a></div>
       <div><h4>Legal</h4><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a></div>
       <div><h4>Help</h4><a href="support.html">Support</a><a href="support.html">Contact</a></div>
     </div>
     <div class="row"><span>&copy; 2026 bom lab</span></div>
   </footer>
 </div>
+<script type="module" src="js/quiz.js"></script>
 </body>
 </html>
