@@ -41,7 +41,7 @@ async function start() {
   document.getElementById('quiz-intro').hidden = true;
   try {
     if (!R) {
-      [R, images] = await Promise.all([import('./routine.js?v=20261116b'), fetch('js/product-images.json?v=20261116b').then((r) => r.json()).catch(() => ({}))]);
+      [R, images] = await Promise.all([import('./routine.js?v=20261116c'), fetch('js/product-images.json?v=20261116c').then((r) => r.json()).catch(() => ({}))]);
     }
   } catch {
     root.innerHTML = '<p class="q-loading">The questions could not load. Please refresh the page and try again.</p>';
