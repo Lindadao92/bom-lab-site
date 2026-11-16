@@ -15,7 +15,7 @@ const GOALS = [
 ];
 const CLIMATES = [['cold-dry', 'Cold, with dry air or heating on'], ['mild', 'Mild'], ['hot-humid', 'Hot and humid'], ['hot-dry', 'Hot and dry'], ['unknown', PNTA]];
 const TRIGGERS = ['Fragrance', 'Essential oils', 'Alcohol', 'Sulfates', 'Lanolin'];
-const PAGES = ['name', 'age', 'gender', 'skin', 'goals', 'climate', 'allergies', 'safety'];
+const PAGES = ['name', 'age', 'gender', 'skin', 'goals', 'climate', 'allergies', 'safety', 'effort'];
 
 const EMPTY = { goals: [], afterCleansing: 'unknown', midday: 'unknown', sensitivity: 'unknown', allergies: '', reactions: '', conditions: [], medications: [], recentProcedure: 'unknown', pregnancy: 'unknown', owned: [], budget: 'unknown', routineLength: 'standard', country: 'US', preferences: [] };
 
@@ -31,7 +31,7 @@ function reset() {
   step = 0;
   ageText = '';
   ageChecked = false;
-  answered = { sensitivity: false, pregnancy: false, medication: false };
+  answered = { sensitivity: false, pregnancy: false, medication: false, effort: false };
 }
 
 async function start() {
@@ -60,6 +60,7 @@ const askPregnancy = () => p.gender !== 'man';
 const triggers = () => p.allergies.split(',').map((t) => t.trim()).filter(Boolean);
 const med = () => (p.medications.includes('isotretinoin') ? 'isotretinoin' : p.medications.includes('rx-retinoid') ? 'rx-retinoid' : p.medications.includes('none') ? 'none' : 'unknown');
 const safetyOpen = () => !answered.sensitivity || !answered.medication || (askPregnancy() && !answered.pregnancy);
+const effortOpen = () => !answered.effort;
 
 function chips(name, options, selected, multi = false) {
   return `<div class="q-chips" role="${multi ? 'group' : 'radiogroup'}">${options
@@ -121,13 +122,21 @@ function pageHtml(page) {
       ${askPregnancy() ? `<h4 class="q-sub">Pregnant, breastfeeding or planning to be?</h4>${chips('pregnancy', [['no', 'No'], ['yes', 'Yes'], ['na', 'Not applicable'], ['unknown', PNTA]], answered.pregnancy ? p.pregnancy : undefined)}` : ''}
       <h4 class="q-sub">Using isotretinoin or a prescription retinoid?</h4>
       ${chips('medication', [['none', 'Neither'], ['isotretinoin', 'Isotretinoin'], ['rx-retinoid', 'Prescription retinoid'], ['unknown', PNTA]], answered.medication ? med() : undefined)}`;
+  if (page === 'effort')
+    return `<h3 class="q-title">How much time do you want to spend on your skin?</h3>
+      <p class="q-lead">Your routine is built to fit. You can change this any time in the app.</p>
+      <div class="q-efforts" role="radiogroup">${R.EFFORTS.map((e) => {
+        const on = answered.effort && p.routineLength === e.id;
+        return `<button type="button" class="q-effort${on ? ' on' : ''}" data-set="routineLength" data-val="${esc(e.id)}" role="radio" aria-checked="${on}"><span class="q-effort-top"><b>${esc(e.label)}</b><span>${esc(e.time)}</span></span><span class="q-effort-detail">${esc(e.detail)}</span></button>`;
+      }).join('')}</div>
+      <p class="q-small">The safety rules are the same at every level. Strong ingredients such as retinoids and acids always go on separate evenings.</p>`;
   return '';
 }
 
 function render() {
   const page = PAGES[step];
   const last = step === PAGES.length - 1;
-  const disabled = (page === 'age' && (ageMissing() || (ageChecked && (ageInvalid() || tooYoung())))) || (page === 'safety' && safetyOpen());
+  const disabled = (page === 'age' && (ageMissing() || (ageChecked && (ageInvalid() || tooYoung())))) || (page === 'safety' && safetyOpen()) || (page === 'effort' && effortOpen());
   root.innerHTML = `
     <div class="q-progress" aria-hidden="true"><i style="width:${((step + 1) / PAGES.length) * 100}%"></i></div>
     <p class="q-count">${step + 1} of ${PAGES.length}</p>
@@ -150,6 +159,7 @@ function next() {
     if (ageInvalid() || tooYoung()) return;
   }
   if (page === 'safety' && safetyOpen()) return;
+  if (page === 'effort' && effortOpen()) return;
   if (step < PAGES.length - 1) { step++; render(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
   finish();
 }
@@ -166,6 +176,9 @@ function set(name, val) {
   } else if (name === 'medication') {
     p.medications = [val];
     answered.medication = true;
+  } else if (name === 'routineLength') {
+    p.routineLength = val;
+    answered.effort = true;
   } else {
     p[name] = val;
     if (name in answered) answered[name] = true;
@@ -206,7 +219,7 @@ function finish() {
     <div class="r-head">
       <span class="eyebrow">Your routine</span>
       <h3 class="q-title">${profile.name ? `${esc(profile.name)}, here is your routine.` : 'Here is your routine.'}</h3>
-      <p class="q-lead">Built from your answers by the same rules the app uses. Get a more detailed face analysis in the app, and your routine adjusts to what your skin actually shows.</p>
+      <p class="q-lead">A ${esc((R.EFFORTS.find((e) => e.id === profile.routineLength)?.label ?? 'Medium').toLowerCase())} routine, built from your answers by the same rules the app uses. Get a more detailed face analysis in the app, and your routine adjusts to what your skin actually shows.</p>
       ${why ? `<ul class="r-why">${why}</ul>` : ''}
     </div>
     <div class="r-grid">${half('am', 'Morning', '☀︎')}${half('pm', 'Evening', '☾')}</div>
@@ -218,6 +231,7 @@ function finish() {
           <li><b>A more detailed face analysis</b> from guided photos of your face, which tunes this routine to your skin</li>
           <li>Your skin match for every product, and swaps that suit you</li>
           <li>Daily selfie check-ins to see change over weeks</li>
+          <li>Retinoids and acids that start on a few evenings and build up as your skin gets used to them, paused if your check-ins show irritation</li>
         </ul>
       </div>
       <a class="soon r-cta" href="${APP_URL}">Download bom lab <small>on the App Store</small></a>
